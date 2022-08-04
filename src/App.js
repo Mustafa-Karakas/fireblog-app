@@ -1,13 +1,17 @@
-import './App.css';
+import React from 'react';
+import AuthContextProvider from './contexts/AuthContext';
+import AppRouter from './router/AppRouter';
+import { ToastContainer } from "react-toastify";
 
-function App() {
-  return (
-    <div className="App">
-      <header>
-        FireBlog App
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <div>
+            <AuthContextProvider>
+                <AppRouter />
+                <ToastContainer />
+            </AuthContextProvider>
+        </div>
+    );
+};
 
 export default App;
