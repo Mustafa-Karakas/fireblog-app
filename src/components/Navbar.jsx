@@ -38,7 +38,7 @@ const Navbar = () => {
                 </button>
                 <button
                   className="ms-2 btn btn-outline-light"
-                  onClick={() => navigate("/newblog")}
+                  onClick={() => navigate("/new-blog")}
                 >
                   New Blog
                 </button>

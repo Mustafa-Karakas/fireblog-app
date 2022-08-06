@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import {initializeApp} from 'firebase/app';
 import {
     createUserWithEmailAndPassword,
     getAuth,
@@ -15,7 +15,7 @@ import {
     toastSuccessNotify,
     toastWarnNotify,
 } from './toastNotify';
-
+import {getDatabase} from "firebase/database";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -26,13 +26,13 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_APP_ID,
 };
 
-console.log(firebaseConfig)
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
+
+export const database = getDatabase(app);
 
 export const createUser = async (email, password, navigate, displayName) => {
     //? yeni bir kullanıcı oluşturmak için kullanılan firebase metodu
@@ -78,10 +78,14 @@ export const userObserver = (setCurrentUser) => {
     //? Kullanıcının signin olup olmadığını takip eden ve kullanıcı değiştiğinde yeni kullanıcıyı response olarak dönen firebase metodu
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            setCurrentUser(user);
+            setCurrentUser({
+                id: user.uid,
+                name: user.displayName,
+                email: user.email
+            });
         } else {
             // User is signed out
-            setCurrentUser(false);
+            setCurrentUser(undefined);
         }
     });
 };
@@ -89,7 +93,6 @@ export const userObserver = (setCurrentUser) => {
 export const logOut = () => {
     signOut(auth);
 };
-
 
 
 export const signUpProvider = (navigate) => {
