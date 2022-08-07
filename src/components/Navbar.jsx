@@ -1,71 +1,3 @@
-// import React from "react";
-// import { useContext } from "react";
-// import { Link, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../contexts/AuthContext";
-// import { logOut } from "../helpers/firebase";
-
-// const Navbar = () => {
-//   const navigate = useNavigate();
-//   const { currentUser } = useContext(AuthContext);
-
-//   return (
-//     <div>
-//       <nav className="navbar navbar-expand-lg ">
-//         <div className="container-fluid">
-//           <Link to="/" className="navbar-brand text-white">
-//             <h4>Fireblog App</h4>
-//           </Link>
-//           <div className="d-flex text-white align-items-center ">
-//             {currentUser ? (
-//               <>
-//                 <h5 className="mb-0 text-capitalize">
-//                   {currentUser.displayName}
-//                 </h5>
-//                 <button
-//                   className="ms-2 btn btn-outline-light"
-//                   onClick={() => navigate("/profile")}
-//                 >
-//                   Profile
-//                 </button>
-//                 <button
-//                   className="ms-2 btn btn-outline-light"
-//                   onClick={() => navigate("/new-blog")}
-//                 >
-//                   New Blog
-//                 </button>
-//                 <button
-//                   className="ms-2 btn btn-outline-light"
-//                   onClick={() => logOut()}
-//                 >
-//                   Logout
-//                 </button>
-//               </>
-//             ) : (
-//               <>
-//                 <button
-//                   className="ms-2 btn btn-outline-light"
-//                   onClick={() => navigate("/login")}
-//                 >
-//                   Login
-//                 </button>
-
-//                 <button
-//                   className="ms-2 btn btn-outline-light"
-//                   onClick={() => navigate("/register")}
-//                 >
-//                   Register
-//                 </button>
-//               </>
-//             )}
-//           </div>
-//         </div>
-//       </nav>
-//     </div>
-//   );
-// };
-
-// export default Navbar;
-
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -88,10 +20,6 @@ export const Navbar = () => {
 
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
-  // const handleChange = (event) => {
-  //   setAuth(event.target.checked);
-  // };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -150,24 +78,13 @@ export const Navbar = () => {
                 <div>
                   {currentUser ? (
                     <>
-                      <MenuItem
-                        onClick={() => navigate("/profile")}
-                        // onClick={handleClose}
-                      >
+                      <MenuItem onClick={() => navigate("/profile")}>
                         Profile
                       </MenuItem>
-                      <MenuItem
-                        onClick={() => navigate("/new-blog")}
-                        // onClick={handleClose}
-                      >
+                      <MenuItem onClick={() => navigate("/new-blog")}>
                         New Blog
                       </MenuItem>
-                      <MenuItem
-                        onClick={() => logOut()}
-                        // onClick={handleClose}
-                      >
-                        Logout
-                      </MenuItem>
+                      <MenuItem onClick={() => logOut()}>Logout</MenuItem>
                     </>
                   ) : (
                     <>
