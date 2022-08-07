@@ -3,7 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
@@ -12,17 +11,31 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { signUpProvider, createUser } from "../helpers/firebase";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const theme = createTheme();
 
-export default function Register() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+// export default function Register() {
+//   const navigate = useNavigate();
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     const data = new FormData(event.currentTarget);
+//     console.log({
+//       email: data.get("email"),
+//       password: data.get("password"),
+//     });
+//   };
+
+const Register = () => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createUser(email, password, navigate);
   };
 
   return (
@@ -81,6 +94,7 @@ export default function Register() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={(e) => setEmail(e.target.value)}
               />
               <TextField
                 margin="normal"
@@ -91,11 +105,9 @@ export default function Register() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e) => setPassword(e.target.value)}
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
+
               <Button
                 type="submit"
                 fullWidth
@@ -105,7 +117,11 @@ export default function Register() {
                 REGISTER
               </Button>
 
-              <Button variant="text" fullWidth>
+              <Button
+                variant="text"
+                fullWidth
+                onClick={() => signUpProvider(navigate)}
+              >
                 Continue with Google
               </Button>
             </Box>
@@ -114,4 +130,6 @@ export default function Register() {
       </Grid>
     </ThemeProvider>
   );
-}
+};
+
+export default Register;
