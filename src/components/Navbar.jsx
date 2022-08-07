@@ -17,7 +17,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
 
-  const [auth, setAuth] = React.useState(true);
+  // const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleMenu = (event) => {
@@ -47,58 +47,58 @@ export const Navbar = () => {
           >
             ─── Fire Blog ───
           </Button>
-          {auth && (
-            <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <div>
-                  {currentUser ? (
-                    <>
-                      <MenuItem onClick={() => navigate("/profile")}>
-                        Profile
-                      </MenuItem>
-                      <MenuItem onClick={() => navigate("/new-blog")}>
-                        New Blog
-                      </MenuItem>
-                      <MenuItem onClick={() => logOut()}>Logout</MenuItem>
-                    </>
-                  ) : (
-                    <>
-                      <MenuItem onClick={() => navigate("/login")}>
-                        Login
-                      </MenuItem>
-                      <MenuItem onClick={() => navigate("/register")}>
-                        Register
-                      </MenuItem>
-                    </>
-                  )}
-                </div>
-              </Menu>
-            </div>
-          )}
+          {/* {auth && ( */}
+          <div>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <div>
+                {currentUser ? (
+                  <>
+                    <MenuItem onClick={() => navigate("/profile")}>
+                      Profile
+                    </MenuItem>
+                    <MenuItem onClick={() => navigate("/new-blog")}>
+                      New Blog
+                    </MenuItem>
+                    <MenuItem onClick={() => logOut()}>Logout</MenuItem>
+                  </>
+                ) : (
+                  <>
+                    <MenuItem onClick={() => navigate("/login")}>
+                      Login
+                    </MenuItem>
+                    <MenuItem onClick={() => navigate("/register")}>
+                      Register
+                    </MenuItem>
+                  </>
+                )}
+              </div>
+            </Menu>
+          </div>
+          {/* )} */}
         </Toolbar>
       </AppBar>
     </Box>
