@@ -48,7 +48,7 @@ export const useBlog = (id) => {
 
 export const deleteBlog = async (id) => {
     await remove(ref(database, "blogs/" + id));
-    toastSuccessNotify("Deleted Successfully")
+    toastSuccessNotify("Blog deleted successfully!")
 }
 
 export const updateBlog = async (info, user) => {
