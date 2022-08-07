@@ -118,7 +118,7 @@ export const Navbar = () => {
             }}
             onClick={() => navigate("/")}
           >
-            ──── Fire Blog ────
+            ─── Fire Blog ───
           </Button>
           {auth && (
             <div>

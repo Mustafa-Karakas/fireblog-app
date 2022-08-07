@@ -6,3 +6,11 @@
   display: flex;
   justify-content: center;
 }
+
+.dashboard-header {
+  text-align: center;
+  color: #046582;
+  font-size: 3rem;
+  font-weight: 400;
+  margin-top: 0;
+}
