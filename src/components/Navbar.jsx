@@ -40,7 +40,11 @@ export const Navbar = () => {
               flexGrow: 1,
               textAlign: "center",
               fontFamily: "Girassol",
-              fontSize: 30,
+              fontSize: {
+                xs: 15,
+                md: 20,
+                lg: 30,
+              },
               cursor: "pointer",
             }}
             onClick={() => navigate("/")}

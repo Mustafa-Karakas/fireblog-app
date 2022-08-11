@@ -31,7 +31,7 @@ export default function RecipeReviewCard() {
             sx={{
               width: 340,
               height: 365,
-              ml: 5,
+              ml: 2,
               mt: 5,
             }}
             onClick={() => navigate(`/details/${item.id}`)}
