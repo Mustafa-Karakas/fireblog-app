@@ -54,7 +54,6 @@ export default function RecipeReviewCard() {
                 whiteSpace: "no-wrap",
                 textOverflow: "ellipsis",
               }}
-              onClick={() => navigate("/details/:id")}
             >
               <Typography
                 variant="h6"

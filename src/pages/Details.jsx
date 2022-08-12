@@ -8,7 +8,7 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { grey, red } from "@mui/material/colors";
+import { grey, red, brown } from "@mui/material/colors";
 import { useBlog } from "../helpers/functions";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
@@ -58,18 +58,40 @@ export default function RecipeReviewCard() {
             {blog?.content}
           </Typography>
         </CardContent>
-        <AccountCircleIcon sx={{ m: 2 }} />
-        <CardActions disableSpacing>
+        <CardContent sx={{ display: "flex", justifyContent: "flex-start" }}>
+          <AccountCircleIcon sx={{ mr: 2 }} />
+          <Typography>{blog?.user?.email}</Typography>
+        </CardContent>
+        <CardActions
+          disableSpacing
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           {blog?.user?.id === currentUser?.id && (
-            <Button
-              aria-label="add to favorites"
-              onClick={() => navigate(`/update-blog/${blog?.id}`)}
-            >
-              Update
-            </Button>
+            <>
+              <Button
+                aria-label="add to favorites"
+                onClick={() => navigate(`/update-blog/${blog?.id}`)}
+                sx={{ fontWeight: "700" }}
+              >
+                Update
+              </Button>
+              <Button
+                aria-label="share"
+                sx={{ color: red[500], fontWeight: "700" }}
+              >
+                Delete
+              </Button>
+            </>
           )}
-          <Button aria-label="share" sx={{ color: red[500] }}>
-            Delete
+          <Button
+            aria-label="share"
+            sx={{ color: brown[500], fontWeight: "700" }}
+            onClick={() => navigate(-1)}
+          >
+            Go Back
           </Button>
         </CardActions>
       </Card>
