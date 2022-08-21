@@ -1,7 +1,7 @@
 import * as React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Card from "@mui/material/Card";
-// import CardHeader from "@mui/material/CardHeader";
+import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -50,9 +50,6 @@ export default function RecipeReviewCard() {
                 height: "100vh",
                 p: 1,
                 cursor: "pointer",
-                overflow: "hidden",
-                whiteSpace: "no-wrap",
-                textOverflow: "ellipsis",
               }}
             >
               <Typography
@@ -63,12 +60,29 @@ export default function RecipeReviewCard() {
                   textTransform: "capitalize",
                   fontFamily: "Girassol",
                   fontWeight: 500,
+                  height: 30,
+                  mb: 1,
+                  mt: 1,
+                  overflow: "hidden",
+                  whiteSpace: "nowrap",
+                  textOverflow: "ellipsis",
                 }}
               >
                 {item.title}
               </Typography>
-              {/* <CardHeader subheader="September 14, 2016" sx={{ p: 0, pt: 1 }} /> */}
-              <Typography variant="body2" color="text.black">
+              <CardHeader subheader="September 18, 2016" sx={{ p: 0, pt: 1 }} />
+
+              <Typography
+                className="dashboard-content"
+                variant="body2"
+                color="black"
+                sx={{
+                  overflow: "hidden",
+                  whiteSpace: "nowrap",
+                  textOverflow: "ellipsis",
+                  height: 60,
+                }}
+              >
                 {item.content}
               </Typography>
             </CardContent>

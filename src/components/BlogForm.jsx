@@ -37,7 +37,7 @@ export default function BlogForm({ blog = INITIAL_DATA, onSubmit }) {
           <Box
             sx={{
               "& .MuiTextField-root": {
-                m: 1,
+                mt: 3,
                 width: "50ch",
               },
             }}

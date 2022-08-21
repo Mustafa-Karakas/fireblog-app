@@ -14,6 +14,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import { deleteBlog } from "../helpers/functions";
 
 export default function RecipeReviewCard() {
   const { id } = useParams();
@@ -41,7 +42,6 @@ export default function RecipeReviewCard() {
         <CardContent
           sx={{
             backgroundColor: grey[200],
-            height: 170,
             p: 1,
             textAlign: "center",
           }}
@@ -49,12 +49,18 @@ export default function RecipeReviewCard() {
           <Typography
             variant="h6"
             component="div"
-            sx={{ textTransform: "uppercase", textAlign: "center" }}
+            color="primary"
+            sx={{
+              textTransform: "uppercase",
+              textAlign: "center",
+              fontFamily: "Girassol",
+              fontWeight: 500,
+            }}
           >
             {blog?.title}
           </Typography>
           {/* <CardHeader subheader="September 14, 2016" /> */}
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.black">
             {blog?.content}
           </Typography>
         </CardContent>
@@ -81,6 +87,9 @@ export default function RecipeReviewCard() {
               <Button
                 aria-label="share"
                 sx={{ color: red[500], fontWeight: "700" }}
+                onClick={() => {
+                  deleteBlog(blog?.id).then(navigate(-1));
+                }}
               >
                 Delete
               </Button>
