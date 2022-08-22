@@ -73,7 +73,6 @@ export default function RecipeReviewCard() {
               <CardHeader subheader="September 18, 2016" sx={{ p: 0, pt: 1 }} />
 
               <Typography
-                className="dashboard-content"
                 variant="body2"
                 color="black"
                 sx={{
